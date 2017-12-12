@@ -1,0 +1,5 @@
+client, Rubens Santos, 200.00
+client, John Doe, 20.00
+something_else, Maria, 10.99
+client, José, 1000.00
+other_person, Yan, 5000.00

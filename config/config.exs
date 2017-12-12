@@ -21,17 +21,18 @@ use Mix.Config
 #     config :logger, level: :info
 #
 
-  config :money,
-    default_currency: :BRL,
-    separator: ".",
-    delimeter: ",",
-    symbol: true,
-    symbol_on_right: false,
-    symbol_space: true
+  
+  #config :money,
+  #  default_currency: :BRL,
+  #  separator: ".",
+  #  delimeter: ",",
+  #  symbol: true,
+  #  symbol_on_right: false,
+  #  symbol_space: true
 
-  config :currency_conversion,
-    source: CurrencyConversion.Source.Fixer,
-    refresh_interval: 86_400_000
+  #config :currency_conversion,
+  #  source: CurrencyConversion.Source.Fixer,
+  #  refresh_interval: 86_400_000
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment

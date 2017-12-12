@@ -1,3 +1,0 @@
-client, Rubens Santos, 200_00
-client, John Doe, 20_00
-something_else, Maria, 10_99
