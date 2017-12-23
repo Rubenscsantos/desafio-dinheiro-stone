@@ -1,5 +1,10 @@
 defmodule DesafioStone.Currency do
   
-  #@type currency :: {float, atom: BRL, rates: 0}
+  @type t :: %__MODULE__
+  {
+    amount: integer, currency: atom
+  }
+
+  defstruct amount: 0, currency: :BRL
 
 end

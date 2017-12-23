@@ -3,7 +3,7 @@ defmodule DesafioStone.Source.RateSource do
   Currency Conversion Source for http://fixer.io/
   """
 
-  alias Poison.Parser
+    alias Poison.Parser
   
     @behaviour CurrencyConversion.Source
   
@@ -22,13 +22,14 @@ defmodule DesafioStone.Source.RateSource do
            SEK: 9.466, SGD: 1.5228, THB: 37.776, TRY: 4.1361, USD: 1.07,
            ZAR: 14.31}}}
     """
+  
     def load do
       case HTTPotion.get(@base_url) do
         %HTTPotion.Response{body: body, status_code: 200} -> parse(body)
         _ -> {:error, "Fixer.io API unavailable."}
       end
     end
-  
+    
     defp parse(body) do
       case Parser.parse(body) do
         {:ok, data} -> interpret data
