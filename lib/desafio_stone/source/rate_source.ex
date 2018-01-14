@@ -12,7 +12,7 @@ defmodule DesafioStone.Source.RateSource do
     @doc """
     Load current currency rates from fixer.io.
     ### Examples
-        iex> CurrencyConversion.Source.Fixer.load
+        iex> DesafioStone.Source.RateSource.load
         {:ok, %CurrencyConversion.Rates{base: :BRL,
           rates: %{AUD: 1.4205, BGN: 1.9558, BRL: 3.4093, CAD: 1.4048, CHF: 1.0693,
            CNY: 7.3634, CZK: 27.021, DKK: 7.4367, GBP: 0.85143, HKD: 8.3006,
