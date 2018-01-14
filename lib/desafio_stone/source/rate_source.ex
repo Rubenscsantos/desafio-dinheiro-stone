@@ -3,7 +3,7 @@ defmodule DesafioStone.Source.RateSource do
   Currency Conversion Source for http://fixer.io/
   """
 
-  alias Poison.Parser
+    alias Poison.Parser
   
     @behaviour CurrencyConversion.Source
   
@@ -12,7 +12,7 @@ defmodule DesafioStone.Source.RateSource do
     @doc """
     Load current currency rates from fixer.io.
     ### Examples
-        iex> CurrencyConversion.Source.Fixer.load
+        iex> DesafioStone.Source.RateSource.load
         {:ok, %CurrencyConversion.Rates{base: :BRL,
           rates: %{AUD: 1.4205, BGN: 1.9558, BRL: 3.4093, CAD: 1.4048, CHF: 1.0693,
            CNY: 7.3634, CZK: 27.021, DKK: 7.4367, GBP: 0.85143, HKD: 8.3006,
@@ -22,13 +22,14 @@ defmodule DesafioStone.Source.RateSource do
            SEK: 9.466, SGD: 1.5228, THB: 37.776, TRY: 4.1361, USD: 1.07,
            ZAR: 14.31}}}
     """
+  
     def load do
       case HTTPotion.get(@base_url) do
         %HTTPotion.Response{body: body, status_code: 200} -> parse(body)
         _ -> {:error, "Fixer.io API unavailable."}
       end
     end
-  
+    
     defp parse(body) do
       case Parser.parse(body) do
         {:ok, data} -> interpret data
