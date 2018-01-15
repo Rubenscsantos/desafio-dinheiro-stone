@@ -26,8 +26,6 @@ defmodule DesafioStone.Currency do
     do: "#{symbol} #{amount}"
   def to_string(%Currency{amount: amount, currency: currency, symbol: symbol}) when is_float(amount),
     do: "#{symbol} #{amount}"
-    
 
-  #def print(t)
 
 end

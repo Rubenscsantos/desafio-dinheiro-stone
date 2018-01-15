@@ -1,6 +1,7 @@
 defmodule DesafioStone.CurrencyConversion.Rates do
 
-  alias DesafioStone.CurrencyConversion.Rates, as: Rates
+  alias DesafioStone.CurrencyConversion.Rates
+  alias DesafioStone.Currency
 
   @type t :: %Rates{
     base: atom,
@@ -15,4 +16,14 @@ defmodule DesafioStone.CurrencyConversion.Rates do
   """
   @enforce_keys [:base, :rates]
   defstruct [:base, :rates]
+
+  @spec get_rate_to_convert(String.t | Currency.t) :: Float.t
+  @doc """
+  """
+  def get_rate_to_convert(currency) when is_bitstring(currency) do
+    {:ok, rates_to_convert} = DesafioStone.Source.RateSource.load
+    inspect rates_to_convert
+    Map.fetch!(rates_to_convert.rates, DesafioStone.CurrencyData.to_atom(currency))
+  end
+
 end
