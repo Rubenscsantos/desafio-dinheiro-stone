@@ -2,7 +2,7 @@ defmodule DesafioStone.Currency do
   
   @type t :: %__MODULE__
   {
-    amount: integer, currency: atom, symbol: String.t
+    amount: Float.t, currency: Atom.t, symbol: String.t
   }
 
   defstruct amount: 0, currency: :BRL, symbol: "R$"
@@ -10,8 +10,8 @@ defmodule DesafioStone.Currency do
   alias DesafioStone.CurrencyData
   alias DesafioStone.Currency
 
-  def new(int, currency) when is_integer(int),
-    do: %Currency{amount: int, currency: CurrencyData.to_atom(currency), symbol: CurrencyData.get!(currency).symbol}
+  def new(amount, currency) when is_integer(amount),
+    do: %Currency{amount: amount, currency: CurrencyData.to_atom(currency), symbol: CurrencyData.get!(currency).symbol}
 
   @spec to_string(Currency.t) :: String.t
   @doc """
