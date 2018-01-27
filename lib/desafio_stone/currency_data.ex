@@ -1,5 +1,8 @@
 defmodule DesafioStone.CurrencyData do
-
+  @moduledoc """
+    Módulo de base para uso de Currency. Possui uma lista de moedas e suas especificações de acordo com a ISO 4217. Dos dados incluídos estão:
+      Nome, Símbolo, Expoente e Código
+  """
   @currencies %{
     AED: %{name: "UAE Dirham",                                             code: 784, symbol: "د.إ",    exponent: 2},
     AFN: %{name: "Afghani",                                                code: 971, symbol: "؋",    exponent: 2},

@@ -4,7 +4,6 @@ defmodule DesafioStone.ClientDataReader do
 
   @moduledoc """
     Módulo que Recebe um arquivo com informações variadas, lê e só retorna os clientes que estão nele. 
-    Além disso, os grava num 
   """
 
   @doc """

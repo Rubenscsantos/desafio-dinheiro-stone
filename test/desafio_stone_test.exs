@@ -3,7 +3,8 @@ defmodule DesafioStoneTest do
   import Mock
 
   doctest DesafioStone.ClientDataReader
-  alias DesafioStone.ClientDataReader, as: ClientDataReader
+  alias DesafioStone.ClientDataReader
+  alias DesafioStone.Currency
 
   @test_file "test/fixtures/client_test_list.txt"
 
@@ -27,5 +28,15 @@ defmodule DesafioStoneTest do
       non_client_data = ClientDataReader.read_file("non_clients_file.txt")
       assert non_client_data == []
     end
+  end
+
+  test "creating a currency in Brazillian Real should return the currency with all the specifications filled" do
+    currency = Currency.new(1000, "brl")
+    assert currency ==  %Currency{amount: 1000, currency: :BRL, symbol: "R$", exponent: 2}
+  end
+
+  test "Using to_string on a currency with different exponent will display properly" do
+    currency = Currency.to_string(Currency.new(1000, "cve"))
+    assert currency = "$1000"
   end
 end

@@ -4,6 +4,7 @@ defmodule DesafioStone.Source.RateSource do
   """
 
     alias Poison.Parser
+    alias DesafioStone.CurrencyConversion.Rates
   
     @behaviour CurrencyConversion.Source
   
@@ -39,7 +40,7 @@ defmodule DesafioStone.Source.RateSource do
   
     defp interpret(%{"base" => base, "rates" => rates = %{}}) do
       case interpret_rates(Map.to_list(rates)) do
-        {:ok, rates} -> {:ok, %DesafioStone.CurrencyConversion.Rates{
+        {:ok, rates} -> {:ok, %Rates{
           base: String.to_atom(base),
           rates: rates
         }}

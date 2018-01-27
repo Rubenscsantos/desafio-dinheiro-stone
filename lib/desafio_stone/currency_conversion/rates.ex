@@ -1,5 +1,7 @@
 defmodule DesafioStone.CurrencyConversion.Rates do
-
+  @moduledoc """
+    Módulo que recebe e coloca os rates, recebidos do site http://fixer.io/, em uma struct para ser acessado por outras funções.
+  """
   alias DesafioStone.CurrencyConversion.Rates
   alias DesafioStone.Currency
 
@@ -10,7 +12,7 @@ defmodule DesafioStone.CurrencyConversion.Rates do
 
     @doc """
     Módulo que define uma struct, responsável por armazenar todas as taxas de conversão(Com base no Real)
-  ### Exemplo
+    ## Exemplo
       iex> %DesafioStone.CurrencyConversion.Rates{base: :BRL, rates: %{USD: 1.4205, EUR: 1.9558}}
       %DesafioStone.CurrencyConversion.Rates{base: :BRL, rates: %{USD: 1.4205, EUR: 1.9558}}
   """

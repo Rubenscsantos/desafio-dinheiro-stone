@@ -26,17 +26,9 @@ defmodule DesafioStone.ClientTransactions do
           IO.puts "Por favor, tente novamente com um cpf valido"
           assessment(%Currency{amount: amount, currency: currency}, number_of_clients)
       end
-    %Client{name: client_name, cpf: %Cpf{number: client_cpf_validated}}
-
     client_value_to_receive = IO.gets "Digite o quanto do valor total este cliente deve receber.\n"
-    client_value_to_receive_float = client_value_to_receive |> String.trim("\n") |> String.to_float
-    assessment(%Currency{amount: amount - client_value_to_receive_float, currency: currency}, number_of_clients - 1)
-    #try do
-    #  client_value_to_receive |> String.trim("\n"), fn(x) ->
-    #  String.to_float(x)
-    #end
-    #catch
-    #  x -> "#{x}.0" |> String.to_float
-    #end
+    client_value_to_receive_clean = client_value_to_receive |> String.trim("\n") |> String.to_integer
+
+    %Client{name: client_name, cpf: %Cpf{number: client_cpf_validated}, value_to_receive: Currency.new(client_value_to_receive_clean, currency)}
   end
 end
