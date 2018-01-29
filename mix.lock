@@ -1,4 +1,5 @@
-%{"bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [], [], "hexpm"},
+%{"brcpfcnpj": {:hex, :brcpfcnpj, "0.1.0", "ab8051d7c3e30dcc049728e2039c77bbb93ee715bf1c622c74c50bea9c3295b0", [], [], "hexpm"},
+  "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [], [], "hexpm"},
   "credo": {:hex, :credo, "0.8.10", "261862bb7363247762e1063713bb85df2bbd84af8d8610d1272cd9c1943bba63", [], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}], "hexpm"},
   "currency_conversion": {:hex, :currency_conversion, "0.3.1", "b4ee3404a0552fa7ac9049b29db6547f5c31ebc83a14dc8fc4c87e1027349d74", [], [{:httpotion, "~> 3.0.2", [hex: :httpotion, repo: "hexpm", optional: false]}, {:money, "~> 1.2.1", [hex: :money, repo: "hexpm", optional: false]}, {:poison, "~> 3.0", [hex: :poison, repo: "hexpm", optional: false]}], "hexpm"},
   "fs": {:hex, :fs, "0.9.2", "ed17036c26c3f70ac49781ed9220a50c36775c6ca2cf8182d123b6566e49ec59", [], [], "hexpm"},

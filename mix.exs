@@ -14,7 +14,7 @@ defmodule DesafioStone.Mixfile do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :mix_test_watch, :mock, :httpotion],
+      extra_applications: [:logger, :mix_test_watch, :mock, :httpotion, :brcpfcnpj],
       mod: {DesafioStone.Application, []}
     ]
   end
@@ -27,7 +27,8 @@ defmodule DesafioStone.Mixfile do
       {:mix_test_watch, "~> 0.5.0"},
       {:mock, "~> 0.3.1"},
       {:httpotion, "~> 3.0.2"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:brcpfcnpj, "~> 0.1.0"}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
