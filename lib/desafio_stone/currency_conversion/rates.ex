@@ -27,8 +27,4 @@ defmodule DesafioStone.CurrencyConversion.Rates do
     {:ok, rates_to_convert} = DesafioStone.Source.RateSource.load
     Map.fetch!(rates_to_convert.rates, DesafioStone.CurrencyData.to_atom(new_currency))
   end
-
-  def teste,
-    do: Agent.get(DesafioStone.Source.RateSource, fn x -> x end)
-
 end
