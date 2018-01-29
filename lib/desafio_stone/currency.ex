@@ -67,23 +67,5 @@ defmodule DesafioStone.Currency do
       {_, _, _} ->
         "#{symbol}#{first_string}.#{last_string}"
     end
-    #cond do
-      #exponent = 0 and first_string = "" ->
-      #  "#{symbol}0"
-      #exponent = 0 and last_string = "" ->
-      #  "#{symbol}#{first_string}"
-      #exponent = 0 and first_string != "" ->
-      #  "#{symbol}#{first_string}"
-      #first_string = "" and last_string = "" ->
-      #  "#{symbol}0.0"
-      #exponent > 0 and first_string = "" ->
-      #  "#{symbol}0.#{last_string}"
-      #first_string != "" and last_string = "" ->
-      #  "#{symbol}#{first_string}.0"
-      #first_string != "" and last_string != "" ->
-      #  "#{symbol}#{first_string}.#{last_string}"
-      #true ->
-      #  "#{symbol}#{first_string}.#{last_string}"
-    #end
   end
 end

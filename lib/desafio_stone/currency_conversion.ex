@@ -18,5 +18,5 @@ defmodule DesafioStone.CurrencyConversion do
       %DesafioStone.Currency{amount: 318, currency: :USD, exponent: 2, symbol: "$"}
   """
   def convert_currency(%Currency{amount: amount_to_convert, currency: currency}, new_currency) when is_integer(amount_to_convert),
-    do: %Currency{amount: (round(amount_to_convert * Rates.get_rate_to_convert(new_currency))), currency: CurrencyData.to_atom(new_currency), symbol: CurrencyData.get!(new_currency).symbol, exponent: CurrencyData.get!(new_currency).exponent}
+    do: %Currency{amount: (round(amount_to_convert * Rates.get_rate_to_convert(currency, new_currency))), currency: CurrencyData.to_atom(new_currency), symbol: CurrencyData.get!(new_currency).symbol, exponent: CurrencyData.get!(new_currency).exponent}
 end

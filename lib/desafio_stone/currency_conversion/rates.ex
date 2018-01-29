@@ -19,13 +19,16 @@ defmodule DesafioStone.CurrencyConversion.Rates do
   @enforce_keys [:base, :rates]
   defstruct [:base, :rates]
 
-  @spec get_rate_to_convert(String.t | Currency.t) :: Float.t
+  @spec get_rate_to_convert(String.t | Currency.t, String.t | Currency.t) :: Float.t
   @doc """
   """
-  def get_rate_to_convert(currency) when is_bitstring(currency) do
+  def get_rate_to_convert(old_currency, new_currency) when is_bitstring(new_currency) do
+    Agent.update(DesafioStone.Source.RateSource, fn x -> old_currency end)
     {:ok, rates_to_convert} = DesafioStone.Source.RateSource.load
-    inspect rates_to_convert
-    Map.fetch!(rates_to_convert.rates, DesafioStone.CurrencyData.to_atom(currency))
+    Map.fetch!(rates_to_convert.rates, DesafioStone.CurrencyData.to_atom(new_currency))
   end
+
+  def teste,
+    do: Agent.get(DesafioStone.Source.RateSource, fn x -> x end)
 
 end
