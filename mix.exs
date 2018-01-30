@@ -22,7 +22,6 @@ defmodule DesafioStone.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      #{:currency_conversion, "~> 0.3.1"},
       {:credo, "~> 0.8.10"},
       {:mix_test_watch, "~> 0.5.0"},
       {:mock, "~> 0.3.1"},

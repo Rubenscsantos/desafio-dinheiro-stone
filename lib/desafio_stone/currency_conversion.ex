@@ -18,7 +18,7 @@ defmodule DesafioStone.CurrencyConversion do
       %DesafioStone.Currency{amount: 318, currency: :USD, exponent: 2, symbol: "$"}
   """
   def convert_currency(%Currency{amount: amount_to_convert, currency: currency}, new_currency) when is_integer(amount_to_convert),
-    do: %Currency{amount: fixes_exponent_range(amount_to_convert * Rates.get_rate_to_convert(currency, CurrencyData.to_atom(new_currency))), currency: CurrencyData.to_atom(new_currency), symbol: CurrencyData.get!(new_currency).symbol, exponent: CurrencyData.get!(new_currency).exponent}
+    do: %Currency{amount: (amount_to_convert * Rates.get_rate_to_convert(currency, CurrencyData.to_atom(new_currency))) |> fixes_exponent_range() , currency: CurrencyData.to_atom(new_currency), symbol: CurrencyData.get!(new_currency).symbol, exponent: CurrencyData.get!(new_currency).exponent}
 
   
   @spec fixes_exponent_range(Float.t) :: Integer.t
@@ -43,12 +43,12 @@ defmodule DesafioStone.CurrencyConversion do
   end
   def remove_decimal_digits(amount, digits) do
     string_to_edit = Integer.to_string(amount)
-    list_of_strings = String.split_at(string_to_edit, String.length(string_to_edit) - digits) |> Tuple.to_list
+    list_of_strings = String.split_at(string_to_edit, String.length(string_to_edit) - digits) |> Tuple.to_list()
     [amount_to_return,_] = list_of_strings
     String.to_integer(amount_to_return)
   end
   def add_decimal_digits(amount, digits) do
-    list_of_strings = String.split_at(amount, String.length(amount) - digits) |> Tuple.to_list
+    list_of_strings = String.split_at(amount, String.length(amount) - digits) |> Tuple.to_list()
     [temp,decimals_to_add] = list_of_strings
     {clean_string,_} = String.split_at(temp, String.length(temp) - 1)
     string_to_return = "#{clean_string}#{decimals_to_add}"

@@ -12,6 +12,7 @@ defmodule DesafioStone.Currency do
       iex> DesafioStone.Currency.to_string(currency_example2)
         "$10.00"
   """
+  
   @type t :: %__MODULE__
   {
     amount: Integer.t, currency: Atom.t, symbol: String.t, exponent: Integer.t
@@ -48,7 +49,7 @@ defmodule DesafioStone.Currency do
   """
   def to_string(%Currency{amount: amount, currency: _, symbol: symbol, exponent: exponent}) when is_integer(amount) do
     string_to_edit = Integer.to_string(amount)
-    list_of_strings = String.split_at(string_to_edit, String.length(string_to_edit) - exponent) |> Tuple.to_list
+    list_of_strings = String.split_at(string_to_edit, String.length(string_to_edit) - exponent) |> Tuple.to_list()
     first_string = List.first(list_of_strings)
     last_string = List.last(list_of_strings)
     case {first_string, last_string, exponent} do

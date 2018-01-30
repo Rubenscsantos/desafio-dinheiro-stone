@@ -2,6 +2,7 @@ defmodule DesafioStone.Source.RateSource do
   @moduledoc """
   Currency Conversion Source for http://fixer.io/
   """
+  
     use Agent
     alias Poison.Parser
     alias DesafioStone.CurrencyConversion.Rates

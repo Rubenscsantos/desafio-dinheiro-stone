@@ -14,7 +14,7 @@ defmodule DesafioStone.ClientDataReader do
     ## Fazer testes, ver se é a melhor opção para guardar informações e se é algo de fácil acesso.
   """
   def records_client_data(data) do
-    record = client(name: List.first(data), balance: List.last(data) |> Float.parse)
+    record = client(name: List.first(data), balance: List.last(data) |> Float.parse())
   end
 
   @doc """

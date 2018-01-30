@@ -2,6 +2,7 @@ defmodule DesafioStone.CurrencyConversion.Rates do
   @moduledoc """
     Módulo que recebe e coloca os rates, recebidos do site http://fixer.io/, em uma struct para ser acessado por outras funções.
   """
+  
   alias DesafioStone.CurrencyConversion.Rates
   alias DesafioStone.Currency
   alias DesafioStone.CurrencyData

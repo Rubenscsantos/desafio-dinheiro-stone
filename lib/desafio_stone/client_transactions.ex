@@ -2,6 +2,7 @@ defmodule DesafioStone.ClientTransactions do
   @moduledoc """
     Módulo que lida com o rateio de transações para múltiplos indivíduos. Retorna uma mensagem com detalhes sobre a transação caso ela seja bem sucedida.
   """
+  
   alias DesafioStone.Currency
   alias DesafioStone.Client
   @spec assessment(Currency.t | Float.t | Integer.t, Integer.t, List.t) :: List.t
@@ -33,7 +34,7 @@ defmodule DesafioStone.ClientTransactions do
           assessment(%Currency{amount: amount, currency: currency}, number_of_clients, list_of_clients)
       end
     client_value_to_receive = IO.gets "Digite o quanto do valor total este cliente deve receber.\n"
-    client_value_to_receive_clean = client_value_to_receive |> String.trim("\n") |> String.to_integer
+    client_value_to_receive_clean = client_value_to_receive |> String.trim("\n") |> String.to_integer()
     client = [%Client{name: client_name, cpf: %Cpf{number: client_cpf_validated}, value_to_receive: Currency.new(client_value_to_receive_clean, currency)}]
     assessment(%Currency{amount: (amount - client_value_to_receive_clean), currency: currency}, number_of_clients - 1, list_of_clients ++ client)
   end
