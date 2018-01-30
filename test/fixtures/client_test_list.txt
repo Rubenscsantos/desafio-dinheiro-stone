@@ -1,0 +1,3 @@
+client, Rubens Santos, 200.00
+client, John Doe, 20.00
+something_else, Maria, 10.99
