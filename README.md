@@ -2,6 +2,8 @@
 
   Projeto desenvolvido para ser capaz de realizar conversão de moedas e rateio de transações financeiras. Abaixo explicarei alguns aspectos importantes do funcionamento do programa.
 
+  Tentei implementar o Docker ao final do projeto, mas apenas consegui fazer a build, não consegui rodar e nem finalizar.
+
 # Como Funciona?
 
   A primeira coisa que acho importante ressaltar é como lidei com Currency. No início estava usando Float mas, com algumas pesquisas, percebi que é um tipo muito incerto de se utilizar. Decidi então tentar usar Integer e levar em conta o exponent da moeda sendo representada para contar as casas decimais, sendo assim, no meu módulo Currency, 10 reais seriam representados como 1000 mas a função to_string do módulo representaria corretamente como R$10,00.
