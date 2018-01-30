@@ -35,9 +35,7 @@ defmodule DesafioStone.ClientTransactions do
       end
     client_value_to_receive = IO.gets "Digite o quanto do valor total este cliente deve receber.\n"
     client_value_to_receive_clean = client_value_to_receive |> String.trim("\n") |> String.to_integer
-
     client = [%Client{name: client_name, cpf: %Cpf{number: client_cpf_validated}, value_to_receive: Currency.new(client_value_to_receive_clean, currency)}]
-
     assessment(%Currency{amount: (amount - client_value_to_receive_clean), currency: currency}, number_of_clients - 1, list_of_clients ++ client)
   end
 

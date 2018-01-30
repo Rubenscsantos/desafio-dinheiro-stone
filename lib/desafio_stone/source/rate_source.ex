@@ -10,7 +10,7 @@ defmodule DesafioStone.Source.RateSource do
     @base_url "https://api.fixer.io/latest?base="
 
     def start_link do
-      Agent.start_link(fn -> "BRL" end, name: __MODULE__)
+      Agent.start_link(fn -> {"BRL",2,0} end, name: __MODULE__)
     end
   
     @doc """
@@ -28,7 +28,8 @@ defmodule DesafioStone.Source.RateSource do
     """
   
     def load do
-      case HTTPotion.get("#{@base_url}#{Agent.get(__MODULE__, fn x -> x end)}") do
+      {currency,_,_} = Agent.get(__MODULE__, fn x -> x end)
+      case HTTPotion.get("#{@base_url}#{Atom.to_string(currency)}") do
         %HTTPotion.Response{body: body, status_code: 200} -> parse(body)
         _ -> {:error, "Fixer.io API unavailable."}
       end

@@ -228,7 +228,7 @@ defmodule DesafioStone.CurrencyData do
   """
   def get!(currency),
     do: get(currency) || currency_doesnt_exist_error(currency)
-
+    
   defp binary_currency_to_atom(currency) when is_binary(currency) do
     try do
       currency |> String.upcase |> String.to_existing_atom |> binary_currency_to_atom
@@ -236,7 +236,6 @@ defmodule DesafioStone.CurrencyData do
       _ -> nil
     end
   end
-
 
   defp binary_currency_to_atom(currency), do: currency
   defp currency_doesnt_exist_error(currency),
