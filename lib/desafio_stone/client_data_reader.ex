@@ -4,7 +4,8 @@ defmodule DesafioStone.ClientDataReader do
 
   @moduledoc """
     Módulo que Recebe um arquivo com informações variadas, lê e só retorna os clientes que estão nele. 
-    Além disso, os grava num 
+
+    Este módulo foi feito no início do Desafio, na versão final acabei não o utilizando, mas resolvi deixá-lo 
   """
 
   @doc """
@@ -48,7 +49,7 @@ defmodule DesafioStone.ClientDataReader do
     |> Enum.filter(& &1)
   end
 
-   @doc """
+  @doc """
     Função que lê um arquivo.
   """
   def read_file(path), do: File.read!(path) |> get_clients_from_file()

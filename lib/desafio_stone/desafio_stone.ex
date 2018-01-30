@@ -1,6 +1,6 @@
 defmodule DesafioStone do
   @moduledoc """
-  Documentation for PluralsightTweet.
+  Documentation for DesafioStone.
   """
 
   @doc """
@@ -8,8 +8,10 @@ defmodule DesafioStone do
 
   ## Examples
 
-      iex> PluralsightTweet.hello
+      iex> DesafioStone.hello
       :world
 
   """
+  def start,
+    do: DesafioStone.Source.RateSource.start_link
 end

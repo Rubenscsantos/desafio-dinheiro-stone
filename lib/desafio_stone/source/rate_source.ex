@@ -2,12 +2,16 @@ defmodule DesafioStone.Source.RateSource do
   @moduledoc """
   Currency Conversion Source for http://fixer.io/
   """
-
+    use Agent
     alias Poison.Parser
+    alias DesafioStone.CurrencyConversion.Rates
+    
   
-    @behaviour CurrencyConversion.Source
-  
-    @base_url "https://api.fixer.io/latest?base=BRL"
+    @base_url "https://api.fixer.io/latest?base="
+
+    def start_link do
+      Agent.start_link(fn -> {"BRL",2,0} end, name: __MODULE__)
+    end
   
     @doc """
     Load current currency rates from fixer.io.
@@ -24,7 +28,8 @@ defmodule DesafioStone.Source.RateSource do
     """
   
     def load do
-      case HTTPotion.get(@base_url) do
+      {currency,_,_} = Agent.get(__MODULE__, fn x -> x end)
+      case HTTPotion.get("#{@base_url}#{Atom.to_string(currency)}") do
         %HTTPotion.Response{body: body, status_code: 200} -> parse(body)
         _ -> {:error, "Fixer.io API unavailable."}
       end
@@ -39,7 +44,7 @@ defmodule DesafioStone.Source.RateSource do
   
     defp interpret(%{"base" => base, "rates" => rates = %{}}) do
       case interpret_rates(Map.to_list(rates)) do
-        {:ok, rates} -> {:ok, %DesafioStone.CurrencyConversion.Rates{
+        {:ok, rates} -> {:ok, %Rates{
           base: String.to_atom(base),
           rates: rates
         }}

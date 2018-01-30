@@ -1,5 +1,8 @@
 defmodule DesafioStone.CurrencyData do
-
+  @moduledoc """
+    Módulo de base para uso de Currency. Possui uma lista de moedas e suas especificações de acordo com a ISO 4217. Dos dados incluídos estão:
+      Nome, Símbolo, Expoente e Código
+  """
   @currencies %{
     AED: %{name: "UAE Dirham",                                             code: 784, symbol: "د.إ",    exponent: 2},
     AFN: %{name: "Afghani",                                                code: 971, symbol: "؋",    exponent: 2},
@@ -225,7 +228,7 @@ defmodule DesafioStone.CurrencyData do
   """
   def get!(currency),
     do: get(currency) || currency_doesnt_exist_error(currency)
-
+    
   defp binary_currency_to_atom(currency) when is_binary(currency) do
     try do
       currency |> String.upcase |> String.to_existing_atom |> binary_currency_to_atom
@@ -233,7 +236,6 @@ defmodule DesafioStone.CurrencyData do
       _ -> nil
     end
   end
-
 
   defp binary_currency_to_atom(currency), do: currency
   defp currency_doesnt_exist_error(currency),
