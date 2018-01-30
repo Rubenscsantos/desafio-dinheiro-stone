@@ -9,7 +9,7 @@ defmodule DesafioStone.ClientTransactions do
     Função que realiza o rateio de valores. Ela recebe iniciamente o valor a ser dividido e a quantidade de clientes que receberão este valor.
     Logo em seguida são solicitados e checados os dados dos clientes, um a um. Caso esteja tudo certo, será retornada uma mensagem de confirmação das transações, dando detalhes.
   """
-  def assessment(%Currency{amount: amount, currency: currency}, number_of_clients, list_of_clients) when number_of_clients < 1 and amount !== 0 do
+  def assessment(%Currency{amount: amount, currency: currency}, number_of_clients, _) when number_of_clients < 1 and amount !== 0 do
     case amount do
       x when x > 0 ->
         "Sobraram #{Currency.to_string(%Currency{amount: amount, currency: currency})} para a transferência, tente novamente."
@@ -17,8 +17,7 @@ defmodule DesafioStone.ClientTransactions do
         "Faltaram #{Currency.to_string(%Currency{amount: amount * -1, currency: currency})} para a transferência, tente novamente"
     end
   end
-  def assessment(%Currency{amount: amount, currency: currency}, number_of_clients, list_of_clients) when number_of_clients < 1 do
-    IO.puts "Valor correto para a quantidade de clientes"
+  def assessment(_,number_of_clients, list_of_clients) when number_of_clients < 1 do
     positive_transaction_response(list_of_clients)
   end
   def assessment(%Currency{amount: amount, currency: currency}, number_of_clients, list_of_clients \\ []) do
@@ -47,6 +46,6 @@ defmodule DesafioStone.ClientTransactions do
     IO.puts "Cliente #{String.trim(head.name,"\n")}, de cpf #{Brcpfcnpj.cpf_format(head.cpf)} receberá #{Currency.to_string(head.value_to_receive)}"
     positive_transaction_response(tail)
   end
-  def positive_transaction_response(list),
+  def positive_transaction_response(_),
     do: IO.puts "Transação bem sucedida!"
 end

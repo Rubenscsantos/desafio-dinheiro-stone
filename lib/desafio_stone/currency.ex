@@ -46,7 +46,7 @@ defmodule DesafioStone.Currency do
       iex> DesafioStone.Currency.to_string(DesafioStone.Currency.new(10, brl))
       ** (ArgumentError) currency WRONG doesn’t exist
   """
-  def to_string(%Currency{amount: amount, currency: currency, symbol: symbol, exponent: exponent}) when is_integer(amount) do
+  def to_string(%Currency{amount: amount, currency: _, symbol: symbol, exponent: exponent}) when is_integer(amount) do
     string_to_edit = Integer.to_string(amount)
     list_of_strings = String.split_at(string_to_edit, String.length(string_to_edit) - exponent) |> Tuple.to_list
     first_string = List.first(list_of_strings)
